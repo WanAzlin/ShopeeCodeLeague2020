@@ -1,0 +1,48 @@
+##Example Question
+##This is where the problem statement will be located. Make sure you read and understand the problem statement and submission requirements BEFORE attempting the question.
+
+##Task
+##1. Add 1 to each row in the number column.
+
+##Submission Format
+##Two columns required:
+
+##id
+##new_number
+##Where id is zero and new_number refers to the sum of the number column plus 2.
+
+##id,new_number
+
+##0,2
+##1,3
+##2,4
+##Your submission should have 101 rows, each with 2 columns.
+
+
+solution:
+
+# This Python 3 environment comes with many helpful analytics libraries installed
+# It is defined by the kaggle/python Docker image: https://github.com/kaggle/docker-python
+# For example, here's several helpful packages to load
+
+import numpy as np # linear algebra
+import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
+
+# Input data files are available in the read-only "../input/" directory
+# For example, running this (by clicking run or pressing Shift+Enter) will list all files under the input directory
+
+import os
+for dirname, _, filenames in os.walk('/kaggle/input'):
+    for filename in filenames:
+        print(os.path.join(dirname, filename))
+
+# You can write up to 5GB to the current directory (/kaggle/working/) that gets preserved as output when you create a version using "Save & Run All" 
+# You can also write temporary files to /kaggle/temp/, but they won't be saved outside of the current session
+# Using Numpy's arange function to generate 100 id values, having 'data' as a dictionary variable
+id_series = np.arange(0, 101)
+data = {'id': id_series, 'new_number': id_series+2}
+
+# Creating a Pandas DataFrame object and exporting it to .csv format, excluding index and header
+df = pd.DataFrame(data)
+df.to_csv('Submission.csv', index=False, header=True)
+df
